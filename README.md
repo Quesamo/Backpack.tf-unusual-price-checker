@@ -8,3 +8,6 @@ SETUP GUIDE:
 2. Type ``pip install requests`` in your command prompt if you don't already have ``requests`` (this is a module needed for communicating with the API)
 3. Run the .py file
 4. Profit.
+
+
+Kinda buggy rn, with many hats being marked as unpriced despite them not actually being so. Report any bugs to me, thank
