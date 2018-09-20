@@ -6,20 +6,15 @@ import json
 
 while True:
     try:
-        api_key = open('api_key.txt', 'r')
-        key = api_key.read()
-        if key == '':
-            no_key = True
-        else:
-            no_key = False
+        with open('api_key.txt', 'r') as api_key:
+            key = api_key.read()
             break
-    except FileNotFoundError:
-        no_key = True
     
-    if no_key == True:
+    except FileNotFoundError:
+
         key = input('No API key found. \nEnter your API key, it can be found here: https://backpack.tf/developer/apikey/view (note that you might have to request access and stuff)\n')
-        api_key = open('api_key.txt', 'w+')
-        api_key.write(key)
+        with open('api_key.txt', 'w+') as api_key:
+            api_key.write(key)
 
 
 payload = {'key': key}
@@ -100,7 +95,7 @@ else:
             if item_input_split[0].lower() in effect.lower():
                 
                 item_effect = effect
-                item_effect_dict = {item_effect : effects_list[effect]}
+                item_effect_dict = {item_effect : effects_list[item_effect]}
                 
                 #EXCEPTIONS
                 if item_input_split[0].lower() == 'orbiting fire':
@@ -132,12 +127,16 @@ else:
                 if str(price_average)[-1] == '0':
                     price_average = int(price_average)
         except KeyError:
+            
+            #DEBUGGING
+            print(item_effect, item_hat)
+            
             print('An error occurred: this item is unpriced.')
             continue
 
 
 
-        if hat_error or effect_error == True:
+        if hat_error == True or effect_error == True:
             print('An error occured.')
 
         else:
