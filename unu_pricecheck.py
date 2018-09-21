@@ -46,6 +46,7 @@ else:
         for quality in response['response']['items'][item]['prices'].keys():
             if quality == '5':
                 unusual_item_list.append(item)
+                break
 
     print('Sorting items...')
     unusual_item_list.sort()
@@ -99,7 +100,7 @@ else:
                 
                 #EXCEPTIONS
                 if item_input_split[0].lower() == 'orbiting fire':
-                    item_effect = 'orbiting fire' 
+                    item_effect = 'Orbiting Fire' 
                     item_effect_dict = {item_effect : effects_list['Orbiting Fire']}
                 
                 
